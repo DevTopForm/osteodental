@@ -1,0 +1,3 @@
+[submodule "htdocs/assets"]
+	path = htdocs/assets
+	url = git@github.com:DevTopForm/osteodental-html.git

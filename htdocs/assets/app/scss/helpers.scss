@@ -1,0 +1,104 @@
+.bg-gray {
+  background-color: var(--gray);
+}
+
+.bg-light {
+  background-color: var(--light-blue);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-blue {
+  background-color: var(--top_blue);
+}
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.pt-25 {
+  padding-top: 25px;
+}
+
+.pb-60-100 {
+  padding-bottom: var(--size-60-100);
+}
+
+.pb-60-100+.mt-minus {
+  margin-top: calc(-1 * var(--size-60-100));
+}
+
+.pt-60-100 {
+  padding-top: var(--size-60-100);
+}
+
+.mb-60-100 {
+  margin-bottom: var(--size-60-100);
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-20-40 {
+  margin-bottom: var(--size-20-40);
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+
+  25% {
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+
+  50% {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  75% {
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+.pin {
+  width: 88px;
+  height: 88px;
+  // background-color: var(--red);
+  transform: translate(-50%, -100%);
+}
+
+.baloon-wrapper {
+  position: relative;
+}
+
+.baloon {
+  top: 0;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 254px;
+  gap: 4px;
+  background-color: var(--white);
+}
+
+.hidden .balloon__description {
+  opacity: 0;
+}

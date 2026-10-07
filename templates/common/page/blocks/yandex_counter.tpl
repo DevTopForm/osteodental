@@ -1,0 +1,1 @@
+{literal}<div style="display: none">Ошибка! Это не код Yandex metrika!</div>{/literal}

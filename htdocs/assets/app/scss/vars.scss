@@ -1,0 +1,98 @@
+:root {
+  --white: #fff;
+  --black: #282828;
+  --top_blue: #3E7DED;
+  --light-blue: #F1F6FE;
+  --blue: #5CBBE1;
+  --mint2: #6BD8DB;
+  --mint: #7AF8D5;
+  --text: #565656;
+  --gray: #F7F7F7;
+  --gray2: #d9d9d9;
+  --gray3: #b6b6b6;
+  --gradient: linear-gradient(178deg, var(--mint) -13.77%, var(--top_blue) 45.92%);
+  --size-8-16: 8px;
+  --size-10-16: 10px;
+  --size-10-20: 10px;
+  --size-14-16: 14px;
+  --size-14-20: 14px;
+  --size-14-30: 14px;
+  --size-16-20: 16px;
+  --size-16-24: 16px;
+  --size-20-30: 20px;
+  --size-20-40: 20px;
+  --size-20-50: 20px;
+  --size-24-30: 24px;
+  --size-24-40: 24px;
+  --size-24-50: 24px;
+  --size-24-60: 24px;
+  --size-24-70: 24px;
+  --size-30-40: 30px;
+  --size-60-100: 60px;
+  --padding: 10px;
+  --igra: 'Igra Sans';
+}
+
+
+$tablet: 768px;
+$desktop: 1024px;
+$container: 1692px;
+$large: 1920px;
+
+
+
+@media (min-width: $tablet) {
+  :root {
+    --size-8-16: 12px;
+    --size-10-16: 14px;
+    --size-10-20: 16px;
+    --size-14-16: 15px;
+    --size-14-20: 16px;
+    --size-14-30: 20px;
+    --size-16-20: 18px;
+    --size-16-24: 20px;
+    --size-20-30: 24px;
+    --size-20-40: 30px;
+    --size-20-50: 32px;
+    --size-24-30: 26px;
+    --size-24-40: 32px;
+    --size-24-50: 32px;
+    --size-24-60: 32px;
+    --size-24-70: 40px;
+    --size-30-40: 34px;
+    --size-60-100: 80px;
+  }
+}
+
+@media (min-width: $desktop) {
+  :root {
+    --size-8-16: 16px;
+    --size-10-16: 16px;
+    --size-10-20: 20px;
+    --size-14-16: 16px;
+    --size-14-20: 20px;
+    --size-14-30: 24px;
+    --size-16-20: 20px;
+    --size-16-24: 24px;
+    --size-20-30: 30px;
+    --size-20-40: 40px;
+    --size-20-50: 50px;
+    --size-24-30: 30px;
+    --size-24-40: 40px;
+    --size-24-50: 40px;
+    --size-24-60: 50px;
+    --size-24-70: 60px;
+    --size-30-40: 40px;
+    --size-60-100: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --size-14-30: 30px;
+    --size-20-40: 40px;
+    --size-24-50: 50px;
+    --size-24-60: 60px;
+    --size-24-70: 70px;
+  }
+}

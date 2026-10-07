@@ -1,0 +1,1 @@
+<p class="{$type}">{eval var=$body}</p>

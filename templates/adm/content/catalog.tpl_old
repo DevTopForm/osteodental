@@ -1,0 +1,125 @@
+<h3 class="action-title">Каталог</h3>
+<p class="action-description edit-content">Управление товарами</p>
+{if $state == 'list'}
+	{if !empty($list)  && $list|@count > 0}
+	<form id="items-remove" action="" method="post">
+		<input type="hidden" name="act" value="list"/>
+		<div class="list_buttons">
+			<input type="submit" name="save_list" value="{$_LNG_ADM.REMOVE}"/>
+			<input type="button" href="{$adm_path}/content/add/{$node->id}" value="{$_LNG_ADM.ADD}"/>
+		</div>
+		<div class="list_pager">
+			{$pager}
+		</div>
+		<div class="clear"></div>
+		<div class="sortable_pager top">
+			<div class="first" to='first'>Поставить первым</div>
+			<div class="last" to='last'>Поставить последним</div>
+		</div>
+		<table {if $node->type->sortable}id="node_content_list"{/if}>
+			<thead>
+				<tr>
+					<th style="width: 20px;">
+						<input type="checkbox" class="no-uniform" id="selectAll" name="selectAll" value="1"/>
+					</th>
+					{foreach from=$fields item='field'}
+						{if $field->show}{if $field->field != "checkbox"}<th>{$field->title}</th>{/if}{/if}
+					{/foreach}
+					{foreach from=$fields item='field'}
+						{if $field->show}{if $field->field == "checkbox"}<th style="width: 16px;"></th>{/if}{/if}
+					{/foreach}
+					<th style="width: 16px;"></th>
+					<th style="width: 16px;"></th>
+				</tr>
+			</thead>
+			<tbody node="{$node->id}">
+				{foreach from=$list item='item' name='list'}
+				<tr itemId="{$item->id}">
+					<td><input type="checkbox" class="no-uniform" name="remove[{$item->id}]" value="1"/></td>
+					{foreach from=$fields item='field'}
+						{if $field->show}
+							{assign var=key value= $field->name}
+							{if $field->field == "text" || $field->field == "smalltext" || $field->field == "integer" || $field->field == "medtext"}
+								<td>
+								<div class="ajaxEdit" fieldType="{$field->type}">
+								<span>{$item->$key}</span>
+								<input style="display:none;" type="text" value="{$item->$key}" />
+								<div node="{$item->node->id}" itemId="{$item->id}" field="{$field->name}" class="saveBtn"></div>
+								</div>
+								</td>
+							{elseif $field->field == "checkbox"}
+							{elseif $field->field == "date"}
+								<td><input class="ajaxSaveDate" node="{$item->node->id}" itemId="{$item->id}" field="{$field->name}" type="text" value="{$item->$key}" name="date"/></td>
+							{else}
+							   <td>{$item->$key}</td>
+							{/if}
+						{/if}
+					{/foreach}
+					{foreach from=$fields item='field'}
+						{if $field->show}
+							{assign var=key value= $field->name}
+							{if $field->field == "checkbox"}
+								<td class="ajaxEdit" fieldType="{$field->field}" node="{$item->node->id}" itemId="{$item->id}" field="{$field->name}">{$item->$key}</td>
+							{/if}
+						{/if}
+					{/foreach}
+					<td><a href="{$adm_path}/content/edit/{$node->id}/{$item->id}" class="t-icon edit"></a></td>
+					<td><a href="{$item->getUrl()}" class="t-icon web" title="Открыть на сайте" target="_blank"></a></td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		<div class="sortable_pager bottom">
+			<div class="first" to='first'>Поставить первым</div>
+			<div class="last" to='last'>Поставить последним</div>
+		</div>
+		<div class="list_buttons">
+			<input type="submit" name="save_list" value="{$_LNG_ADM.REMOVE}"/>
+			<input type="button" href="{$adm_path}/content/add/{$node->id}" value="{$_LNG_ADM.ADD}"/>
+		</div>
+		<div class="list_pager">
+			{$pager}
+		</div>
+		<div class="clear"></div>
+	</form>
+	{else}
+		<p>{$_LNG_ADM.LIST_IS_EMPTY}</p>
+		<input type="button" href="{$adm_path}/content/add/{$node->id}" value="{$_LNG_ADM.ADD}"/>
+	{/if}
+	<script>
+		$(function() {ldelim}
+			$("input[type='button'][href]").click(function() {ldelim}
+				window.location.href = $(this).attr("href");
+			{rdelim});
+
+			$("#items-remove").submit(function() {ldelim}
+				if($("input:focus").parent().hasClass("ajaxEdit")) return false;
+				return confirm('{$_LNG_ADM.REMOVE_ITEMS_CONFIRM}');
+			{rdelim});
+
+			$("#selectAll").click(function() {ldelim}
+				var checkboxes = $(this).parents('form').find("input[type=checkbox]").not(this);
+				var checked = $(this).attr("checked");
+				if (checked) {ldelim}
+					$(checkboxes).attr("checked", checked);
+				{rdelim} else {ldelim}
+					$(checkboxes).removeAttr("checked");
+				{rdelim}
+			{rdelim});
+		{rdelim});
+	</script>
+{elseif $state == 'edit' || $state == 'add'}
+	<form id="item-edit" action="" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="act" value="item"/>
+		{foreach from=$fields item='field'}
+			{if !$field->advanced || ($field->advanced && !$params.seo_things)}
+				{include file='content/fields/'|cat:$field->field|cat:'.tpl'}
+			{/if}
+		{/foreach}
+		<p></p>
+		<input type="submit" name="save" value="{$_LNG_ADM.SAVE}"/>
+		{if $state == 'edit'}<input id="save_item_abs" type="submit" name="save_item" value="{$_LNG_ADM.APPLY}" />{/if}
+		<a href="{$adm_path}/content/list/{$node->id}">{$_LNG_ADM.CANCEL}</a>
+	</form>
+	<div class="clear"></div>
+{/if}

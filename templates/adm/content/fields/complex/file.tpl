@@ -1,0 +1,36 @@
+<div class="label {if $field->errorsMessage}mistake{/if}">
+    <div class="imgs imgs--sortable">
+        <label class="btn label__file-wrapper label-file">
+            <input type="file" class="label__file" name="{$name}" accept="" value="" data-max-length="20">
+            <svg fill="none" width="16" height="16">
+                <use xlink:href="{$adm_path}/assets/img/sprite.svg#plus"></use>
+            </svg>
+            <span>{$field->title}{if $field->required}*{/if}</span>
+            <div class="label__file-uploader uploader">
+                <div class="uploader-inside"></div>
+            </div>
+        </label>
+
+
+        {assign attach $field->getAttach()}
+        {if $attach->id}
+            <div class="img" data-rel="{$field->id}">
+                <div class="img__inside">
+                    <svg fill="none" width="50" height="50">
+                        <use href="{$adm_path}/assets/img/sprite.svg#file"></use>
+                    </svg>
+                </div>
+                <a target="_blank" href="{$attach->getLink()}" class="img__name">{$attach->src_name}</a>
+                <div class="btn img__close">
+                    <svg fill="none" width="16" height="16">
+                        <use href="{$adm_path}/assets/img/sprite.svg#clear"></use>
+                    </svg>
+                </div>
+                <label class="img__label">
+                    <input type="checkbox" name="clear_{$name}" value="1">
+                    <span>Удалить</span>
+                </label>
+            </div>
+        {/if}
+    </div>
+</div>

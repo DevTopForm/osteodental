@@ -1,0 +1,98 @@
+html {
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  font-size: 16px;
+  // scroll-padding-top: 90px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background-color: var(--white);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  font-family: 'Gotham Pro', 'Roboto', sans-serif;
+  font-variant-ligatures: none;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-60-100);
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+button {
+  appearance: none;
+}
+
+main {
+  position: relative;
+}
+
+input,
+select {
+  appearance: none;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.visually-hidden:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  min-width: 0;
+  width: 100%;
+  max-width: $container;
+  padding-inline: var(--padding);
+  margin: 0 auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0;
+  /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  /* Firefox */
+}
