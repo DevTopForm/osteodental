@@ -14,6 +14,7 @@ use App\Query;
 use App\Registry;
 use App\Template;
 use App\Node\Item as NodeItem;
+use App\Item\Infocenter as ItemInfocenter;
 
 class Model
 {
@@ -297,23 +298,41 @@ class Model
         return $items;
     }
 
-    public static function getListByIDs(string $IDs, string $table, string $class_name): array
+    public static function getListByIDs(string $IDs, string $table, string $class_name, array $extra_filters = []): array
     {
         $result = [];
 
         if(
             !empty($IDs)
         ) {
+            $filters  =  [
+                'public = 1',
+                'id' => sprintf('id IN (%s)', $IDs)
+            ];
+
+            $sorters = [
+                'sorter ASC'
+            ];
+
+            $limit = NULL;
+
+            if($IDs == 'new') {
+                unset($filters['id']);
+                $limit = 4;
+                $sorters = [
+                  'id DESC'
+                ];
+            }
+
+            if(!empty($extra_filters)){
+                $filters = array_merge($filters, $extra_filters);
+            }
+
             NodeItem::$itemsTable = $table;
             $result = NodeItem::getList([
-                'filters' => [
-                    'public = 1',
-                    sprintf('id IN (%s)', $IDs)
-                ],
-                'sorters' => [
-                    'sorter ASC'
-                ]
-            ])->getItems();
+                'filters' => $filters,
+                'sorters' => $sorters
+            ], $limit)->getItems();
         }
 
         return array_map([$class_name, 'prepareItem'], $result);
@@ -347,6 +366,11 @@ class Model
     protected static function getNewsByIDs(string $IDs): array
     {
         return self::getListByIDs($IDs, 'content_news', News::class);
+    }
+
+    protected static function getArticlesByIDs(string $IDs): array
+    {
+        return self::getListByIDs($IDs, 'content_infocenter', Infocenter::class, ['type' => ItemInfocenter::TYPE_ARTICLE]);
     }
 
     protected static function getServicesByIDs(string $IDs): array

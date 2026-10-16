@@ -21,8 +21,10 @@
     <meta name="{$node->noindex}" content="noindex,follow">
 {/if}
 
-{if !empty($node->canonical)}
+{if $node->canonical}
     <link rel="canonical" href="{$params.site.protocol}{$params.site.host}{$node->canonical}"/>
+{else}
+    <link rel="canonical" href="{$params.site.protocol}{$params.site.host}{$smarty.server.REQUEST_URI|strtok:"?"}"/>
 {/if}
 
 <link rel="icon" href="{$favicon}" type="image/x-icon">

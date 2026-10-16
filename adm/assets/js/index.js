@@ -9430,14 +9430,50 @@ var blocksHandler = function blocksHandler() {
 };
 ;// CONCATENATED MODULE: ./app/js/components/imgs/sortImgs.js
 
-var onEnd = function onEnd(event) {
-  var images = event.target.querySelectorAll('[data-rel]');
-  if (images.length) {
-    var imagesIDs = Array.from(images).map(function (image) {
-      return image.dataset.rel;
-    });
-    event.target.querySelector('.js-sort-imgs').value = imagesIDs.join(';');
+
+var getOrderedIds = function getOrderedIds(container) {
+  var images = container.querySelectorAll('[data-rel]');
+  if (!images.length) return [];
+  return Array.from(images).filter(function (image) {
+    return image.style.display !== 'none';
+  }).map(function (image) {
+    return image.dataset.rel;
+  });
+};
+var updateSortInput = function updateSortInput(container) {
+  var _container$closest;
+  var ids = getOrderedIds(container);
+  var sortInput = container.querySelector('.js-sort-imgs') || ((_container$closest = container.closest('.label')) === null || _container$closest === void 0 ? void 0 : _container$closest.querySelector('.js-sort-imgs'));
+  if (ids.length && sortInput) {
+    sortInput.value = ids.join(';');
   }
+  return ids;
+};
+var sendMultiimageSort = function sendMultiimageSort(container, ids) {
+  var _container$dataset = container.dataset,
+    fieldName = _container$dataset.fieldName,
+    nodeId = _container$dataset.nodeId,
+    itemId = _container$dataset.itemId;
+  if (!fieldName || !nodeId || !itemId || !ids.length) return;
+  var positionsRow = ids.map(function (id) {
+    return "list[]=".concat(id);
+  }).join('&');
+  return ajaxSend({
+    url: "/adm/ajax/sort/multiimage?node_id=".concat(nodeId, "&item_id=").concat(itemId, "&field_name=").concat(fieldName, "&").concat(positionsRow),
+    formData: '',
+    failHandler: function failHandler() {
+      return console.log('Порядок изображений не сохранился');
+    },
+    method: 'POST'
+  });
+};
+var onEnd = function onEnd(event) {
+  var _event$target;
+  // event.target — перетаскиваемый .img, контейнер — event.to
+  var container = event.to || ((_event$target = event.target) === null || _event$target === void 0 ? void 0 : _event$target.closest('.imgs--sortable')) || event.target;
+  if (!(container !== null && container !== void 0 && container.querySelectorAll)) return;
+  var ids = updateSortInput(container);
+  sendMultiimageSort(container, ids);
 };
 var setSortableImgs = function setSortableImgs(className) {
   var container = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
@@ -12536,7 +12572,6 @@ var ImgsCropper = /*#__PURE__*/function () {
 
 
 
-
 var setImgTemplate = function setImgTemplate(_ref) {
   var id = _ref.id,
     img = _ref.img,
@@ -12615,20 +12650,14 @@ var SingleImgLoad = /*#__PURE__*/function () {
   }, {
     key: "onloadHandler",
     value: function onloadHandler(evt) {
+      var _this$container;
       this.imgBlock = dom_domElt("[data-rel=\"".concat(this.rel, "\"]"));
       this.imgBlock.find('img').$el.src = evt.srcElement.result;
       this.removeHandlers();
-      new sortable_esm(this.imgBlock.$el, {
-        draggable: ".img",
-        chosenClass: "sortable-chosen",
-        // Class name for the chosen item
-        animation: 150,
-        handle: '.js-handle',
-        fallbackOnBody: true,
-        dragClass: "sortable-drag",
-        // Class name for the dragging item
-        onEnd: onEnd
-      });
+      // контейнер уже sortable (setSortableImgs), новую картинку подхватывает существующий Sortable;
+      // обновляем hidden-поле порядка
+      var container = ((_this$container = this.container) === null || _this$container === void 0 ? void 0 : _this$container.$el) || this.container;
+      if (container !== null && container !== void 0 && container.querySelectorAll) updateSortInput(container);
     }
   }, {
     key: "createImgContainer",
@@ -12654,6 +12683,7 @@ var SingleImgLoad = /*#__PURE__*/function () {
   return SingleImgLoad;
 }();
 ;// CONCATENATED MODULE: ./app/js/components/imgs/ImgUploader.js
+
 
 
 
@@ -12738,6 +12768,7 @@ var ImgUploader = /*#__PURE__*/function () {
     value: function removeEltHandler(evt) {
       var target = evt.target.closest(IMG_CLOSE_CLASS);
       if (target) {
+        var _this$imgWrap;
         evt.preventDefault();
         evt.stopImmediatePropagation();
         var imgBlock = target.closest('[data-rel]');
@@ -12755,6 +12786,7 @@ var ImgUploader = /*#__PURE__*/function () {
           imgBlock.querySelector('input').checked = true;
           imgBlock.style.display = 'none';
         }
+        if ((_this$imgWrap = this.imgWrap) !== null && _this$imgWrap !== void 0 && (_this$imgWrap = _this$imgWrap.$el) !== null && _this$imgWrap !== void 0 && _this$imgWrap.querySelectorAll) updateSortInput(this.imgWrap.$el);
       }
     }
   }, {
@@ -64726,6 +64758,7 @@ var initiateEditors = function initiateEditors(container, classList) {
       // You must add the 'katex' library at options to use the 'math' plugin.
       /** ['imageGallery'] */ // You must add the "imageGalleryUrl".
       ['fullScreen', 'showBlocks', 'codeView'], ['preview', 'print']
+
       /** ['dir', 'dir_ltr', 'dir_rtl'] */ // "dir": Toggle text direction, "dir_ltr": Right to Left, "dir_rtl": Left to Right
       ],
 
@@ -64780,6 +64813,9 @@ var initiateEditors = function initiateEditors(container, classList) {
           }
         }
       },
+      link: defineProperty_defineProperty(defineProperty_defineProperty(defineProperty_defineProperty({
+        uploadUrl: "/api/upload/file"
+      }, "uploadUrl", '/api/upload.php'), "keepFormatType", true), "linkEnableFileUpload", true),
       lang: langs_ru,
       imageGallery: {
         data: []

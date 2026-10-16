@@ -34,6 +34,7 @@ class Template extends Smarty
 
         $this->registerPlugin("modifier", "pre", "pre");
         $this->registerPlugin("modifier", "var_dump", "var_dump");
+        $this->registerPlugin("modifier", "strtok", "strtok");
         $this->registerPlugin("modifier", "date", "date");
         $this->registerPlugin("modifier", "nl2br", "nl2br");
         $this->registerPlugin("modifier", "max", "max");

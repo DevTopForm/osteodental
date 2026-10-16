@@ -35,6 +35,9 @@
                 {/if}
 
                     {foreach from=$content item='result' name='results'}
+                        {if $alter}
+                            {include file='module/results/include/alter.tpl' content=$result}
+                        {else}
                         <div class="results-slider__slide result-slide swiper-slide">
                             <div class="container result-slide__container">
                                 <div class="result-slide__person">
@@ -151,23 +154,8 @@
                                                             {else}
                                                                 {assign var="delay" value=$delay+0.2}
                                                             {/if}
-                                                            <div class="doctor-slide  doctor-slide--sm swiper-slide"
-                                                                 data-animation="anim-popup-anim" data-delay="{$delay}">
-                                                                <div class="doctor-slide__img">
-                                                                    {if $doctor->image->id}
-                                                                        <img src="{$doctor->image->getLink()}" alt=""
-                                                                             width="212" height="212">
-                                                                    {/if}
-                                                                </div>
-                                                                <div class="doctor-slide__content">
-                                                                    <div class="doctor-slide__name">{$doctor->title}</div>
-                                                                    {if $doctor->position}
-                                                                        <div class="doctor-slide__pos">
-                                                                            {$doctor->position}
-                                                                        </div>
-                                                                    {/if}
-                                                                </div>
-                                                            </div>
+
+                                                            {include file="module/staff/include/slide.tpl" class="doctor-slide--sm swiper-slide" delay=$delay}
                                                         {/foreach}
                                                     </div>
                                                 </div>
@@ -194,6 +182,7 @@
                                 </div>
                             </div>
                         </div>
+                        {/if}
                     {/foreach}
 
                 {if $is_slider}
@@ -201,5 +190,16 @@
                 {/if}
             </div>
         </div>
+
+        {if $more}
+            <div class="more-container">
+                <a href="/results" class="more-link result-block__more">
+                    <span>Все результаты</span>
+                    <svg class="btn__icon" fill="none" width="25" height="17">
+                        <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr2"></use>
+                    </svg>
+                </a>
+            </div>
+        {/if}
     </div>
 {/if}

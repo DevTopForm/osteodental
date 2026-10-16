@@ -445,102 +445,104 @@
     </section>
 {/if}
 
-<section class="overflow pb-60-100 pt-60-100">
-    {if $content->text_2_title}
-        <section class="digital {if $content->video_2->id || $content->video_2_cover->id || $content->under_video_2_title}mb-60-100{/if} container">
-            {if $content->text_2_sign}
-                <div class="tag  digital__tag">{$content->text_2_sign}</div>
-            {/if}
-            <div class="digital__content">
-                {if $content->text_2_title}
-                    <h2 class="h2 anim-block anim-masked" data-animation="anim-masked-mask">{$content->text_2_title}</h2>
+{if $content->text_2_title || $content->video_2->id || $content->video_2_cover->id || $content->under_video_2_title}
+    <section class="overflow pb-60-100 pt-60-100">
+        {if $content->text_2_title}
+            <section class="digital {if $content->video_2->id || $content->video_2_cover->id || $content->under_video_2_title}mb-60-100{/if} container">
+                {if $content->text_2_sign}
+                    <div class="tag  digital__tag">{$content->text_2_sign}</div>
                 {/if}
-
-                <div class="digital__text  anim-block anim-masked" data-animation="anim-masked-mask">
-                    {$content->text_2}
-                </div>
-            </div>
-
-            <div class="digital__imgs anim-block">
-                <div class="digital__imgs-inside">
-                    {if $content->text_2_image->id}
-                        <img src="{$content->text_2_image->getLink()}" alt="" class="digitlal__face">
+                <div class="digital__content">
+                    {if $content->text_2_title}
+                        <h2 class="h2 anim-block anim-masked" data-animation="anim-masked-mask">{$content->text_2_title}</h2>
                     {/if}
-                </div>
-            </div>
-        </section>
-    {/if}
 
-    {if $content->video_2->id || $content->video_2_cover->id}
-        <div class="video-block  {if $content->video_2_short}video-block--short{/if} container" style="transform: translate3d(0,0,0);" data-parallax="0.2">
-            <div class="video-block__content anim-block anim-masked" data-animation="anim-masked-mask">
-                {if $content->video_2_title}
-                    <h2 class="h2">{$content->video_2_title}</h2>
-                {/if}
-
-                {if $content->video_2_text}
-                    <div class="video-block__text">{$content->video_2_text}</div>
-                {/if}
-            </div>
-            <div class="video-block__video js-video-block">
-                <div class="video anim-cliped anim-block" data-animation="anim-cliped-anim"  {if $content->video_2->id}data-video="{$content->video_2->getLink()}"{/if}>
-                    {if $content->video_2_cover->id}
-                        <img src="{$content->video_2_cover->getLink()}" alt="" width="820" height="476">
-                    {/if}
-                    {if $content->video_2->id}
-                        <button class="btn video-btn">
-                            <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z" fill="url(#play)"></path>
-
-                            </svg>
-                            <svg class="btn__pause" width="30" height="34" viewBox="0 0 33 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M27.5 75.5L27.5 5.5M5.5 75.5L5.5 5.5" stroke="url(#play)" stroke-width="11" stroke-linecap="round"></path>
-
-                            </svg>
-                        </button>
-                    {/if}
-                </div>
-            </div>
-            {if $content->video_2->id}
-                <div class="video-block__btn">
-                    <div class="result-slide__video-btn-inside">
-                        <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z"
-                                  fill="url(#paint0_linear_750_782)"></path>
-                            <defs>
-                                <linearGradient id="paint0_linear_750_782" x1="6.5" y1="-0.72998" x2="0.00811087" y2="14.3424"
-                                                gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#7BFAD5"></stop>
-                                    <stop offset="1" stop-color="white"></stop>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                    <div class="digital__text  anim-block anim-masked" data-animation="anim-masked-mask">
+                        {$content->text_2}
                     </div>
                 </div>
-            {/if}
-        </div>
-    {/if}
 
-    {if $content->under_video_2_title}
-        <div class="results  container" data-parallax="0.2">
-            <h3 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
-                {$content->under_video_2_title}
-            </h3>
-            <div class="results__img">
-                {if $content->under_video_2_image->id}
-                    <img src="{$content->under_video_2_image->getLink()}" alt="{$content->under_video_2_title|escape}" width="748" height="571">
+                <div class="digital__imgs anim-block">
+                    <div class="digital__imgs-inside">
+                        {if $content->text_2_image->id}
+                            <img src="{$content->text_2_image->getLink()}" alt="" class="digitlal__face">
+                        {/if}
+                    </div>
+                </div>
+            </section>
+        {/if}
+
+        {if $content->video_2->id || $content->video_2_cover->id}
+            <div class="video-block  {if $content->video_2_short}video-block--short{/if} container" style="transform: translate3d(0,0,0);" data-parallax="0.2">
+                <div class="video-block__content anim-block anim-masked" data-animation="anim-masked-mask">
+                    {if $content->video_2_title}
+                        <h2 class="h2">{$content->video_2_title}</h2>
+                    {/if}
+
+                    {if $content->video_2_text}
+                        <div class="video-block__text">{$content->video_2_text}</div>
+                    {/if}
+                </div>
+                <div class="video-block__video js-video-block">
+                    <div class="video anim-cliped anim-block" data-animation="anim-cliped-anim"  {if $content->video_2->id}data-video="{$content->video_2->getLink()}"{/if}>
+                        {if $content->video_2_cover->id}
+                            <img src="{$content->video_2_cover->getLink()}" alt="" width="820" height="476">
+                        {/if}
+                        {if $content->video_2->id}
+                            <button class="btn video-btn">
+                                <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z" fill="url(#play)"></path>
+
+                                </svg>
+                                <svg class="btn__pause" width="30" height="34" viewBox="0 0 33 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M27.5 75.5L27.5 5.5M5.5 75.5L5.5 5.5" stroke="url(#play)" stroke-width="11" stroke-linecap="round"></path>
+
+                                </svg>
+                            </button>
+                        {/if}
+                    </div>
+                </div>
+                {if $content->video_2->id}
+                    <div class="video-block__btn">
+                        <div class="result-slide__video-btn-inside">
+                            <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z"
+                                      fill="url(#paint0_linear_750_782)"></path>
+                                <defs>
+                                    <linearGradient id="paint0_linear_750_782" x1="6.5" y1="-0.72998" x2="0.00811087" y2="14.3424"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#7BFAD5"></stop>
+                                        <stop offset="1" stop-color="white"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
                 {/if}
             </div>
-            <div class="results__content">
-                <div class="results__text">
-                    {$content->under_video_2_text}
-                </div>
-                <button class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
-            </div>
+        {/if}
 
-        </div>
-    {/if}
-</section>
+        {if $content->under_video_2_title}
+            <div class="results  container" data-parallax="0.2">
+                <h3 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
+                    {$content->under_video_2_title}
+                </h3>
+                <div class="results__img">
+                    {if $content->under_video_2_image->id}
+                        <img src="{$content->under_video_2_image->getLink()}" alt="{$content->under_video_2_title|escape}" width="748" height="571">
+                    {/if}
+                </div>
+                <div class="results__content">
+                    <div class="results__text">
+                        {$content->under_video_2_text}
+                    </div>
+                    <button class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
+                </div>
+
+            </div>
+        {/if}
+    </section>
+{/if}
 
 <div class="overflow">
     {$blocks.about}
@@ -553,7 +555,7 @@
 
 
 {if $content->stocks}
-    {include file="module/includes/stocks.tpl" content=$content->stocks title=$content->stocks_title}
+    {include file="module/includes/stocks.tpl" content=$content->stocks title=$content->stocks_title class='pt-60-100 pb-60-100'}
 {/if}
 
 {if $content->faq}

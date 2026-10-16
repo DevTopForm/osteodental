@@ -1,5 +1,5 @@
 {if $content}
-    <section id="stocks" class="overflow">
+    <section id="stocks" class="overflow {$class}">
         <div class="container">
             {if $title}
                 <h3 class="h3 mb-30  anim-block anim-masked" data-animation="anim-masked-mask">{$title}</h3>
