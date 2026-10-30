@@ -15,7 +15,7 @@
             </div>
             {if $content->text}
                 <div class="result-sl__anam">
-                    <h4>Анамнез</h4>
+                    <h3>Анамнез</h3>
                     {$content->text}
                 </div>
             {/if}

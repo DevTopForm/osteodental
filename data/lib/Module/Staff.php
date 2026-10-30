@@ -27,7 +27,9 @@ class Staff extends Listing
 
 
         if (!empty($item->image) && !is_object($item->image)) {
-            $item->image = new Image($item->image);
+            $item->image = $this->node->og_image = new Image($item->image);
+        }elseif (!empty($item->image) && is_object($item->image)){
+            $this->node->og_image = $item->image;
         }
 
         $item->certificates = !empty($item->certificates) ? Complex::getDisplayValue($item->certificates) : [];
@@ -39,36 +41,44 @@ class Staff extends Listing
 
         $this->data['ld_json'] = json_encode([
             "@context" => "https://schema.org",
-            "@type" => "Physician",
-            "@id" => "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl(),
-            "name" => $item->title,
-//            "alternateName" => "Доктор Иванов",
-            "image" => $item->image->id ? $item->image->getLink() : null,
-            "description" => $item->position,
-            "telephone" => $this->params['phone'],
-            "email" => $this->params['email'],
-            "address" => [
-                "@type" => "PostalAddress",
-                "streetAddress" => str_replace('Санкт-Петербург, ', '', $this->params['address']),
-                "addressLocality" => "Санкт-Петербург",
-//                "postalCode" => "101000",
-                "addressCountry" => "RU"
-            ],
-            "makesOffer" => !empty($item->prices) ? array_map(function($price){
-                return  [
-                    "@type" => "Offer",
-                    "name" => $price->title,
-                    "price" => preg_replace('/[^0-9]/', '', $price->price),
-                    "priceCurrency" => "RUB"
-                ];
-            }, $item->prices) : []
-//            "medicalSpecialty" => "Surgical",
-//            "affiliation" => [
-//                "@type" => "MedicalOrganization",
-//                "name" => $this->params['sitename'],
-//                "url" => "https://" . $_SERVER['SERVER_NAME']
-//            ],
-//            "openingHours" => "Mo-Fr 09:00-20:00"
+            "@graph" => [
+                [
+                    "@type"      => "ProfilePage",
+                    "@id"        => "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl() . "profilepage",
+                    "url"        => "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl(),
+                    "name"       => $item->title .' - ' . $item->position,
+                    "mainEntity" => [ "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl() . "#physician"],
+                ],
+                [
+                    "@type" => ["Physician", "Person"],
+                    "@id" => "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl() . "#physician",
+                    "url" => "https://" . $_SERVER['SERVER_NAME'] . $item->getUrl(),
+                    "name" => $item->title,
+        //            "alternateName" => "Доктор Иванов",
+                    "image" => $item->image->id ? $item->image->getLink() : null,
+                    "description" => $item->position,
+                    "telephone" => $this->params['phone'],
+                    "email" => $this->params['email'],
+                    "address" => [
+                        "@type" => "PostalAddress",
+                        "streetAddress" => str_replace('Санкт-Петербург, ', '', $this->params['address']),
+                        "addressLocality" => "Санкт-Петербург",
+        //                "postalCode" => "101000",
+                        "addressCountry" => "RU"
+                    ],
+                    "makesOffer" => !empty($item->prices) ? array_map(function($price){
+                        return  [
+                            "@type" => "Offer",
+                            "name" => $price->title,
+                            "price" => preg_replace('/[^0-9]/', '', $price->price),
+                            "priceCurrency" => "RUB"
+                        ];
+                    }, $item->prices) : [],
+                    "worksFor" => [
+                        "@id" => sprintf("https://%s#dentist" , $_SERVER['SERVER_NAME'])
+                    ]
+                ]
+            ]
         ], JSON_UNESCAPED_UNICODE);
 
         return $item;

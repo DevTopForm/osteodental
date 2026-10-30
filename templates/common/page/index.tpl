@@ -4,12 +4,12 @@
     {include file='page/blocks/meta.tpl'}
 </head>
 <body>
-{include file='page/blocks/yandex_counter.tpl'}
-{include file='page/blocks/google_counter.tpl'}
+{*{include file='page/blocks/yandex_counter.tpl'}*}
+{*{include file='page/blocks/google_counter.tpl'}*}
 <div class="js-top"></div>
 {include file='page/blocks/header.tpl'}
 
-<main class="main">
+<main id="main-content" class="main">
     {$content}
 </main>
 

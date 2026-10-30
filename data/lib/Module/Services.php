@@ -116,6 +116,11 @@ class Services extends Item
             $this->data['ld_json_faq'] = json_encode($this->data['ld_json_faq'], JSON_UNESCAPED_UNICODE);
         }
 
+
+//        if(!empty($item->price)) {
+//            $this->data['schema'] = self::getServiceSchema($item);
+//        }
+
         $this->data['content'] = $item;
     }
 
@@ -125,5 +130,31 @@ class Services extends Item
         $node->item = Node\Item::getByKey('node', $node->id);
 
         return $node;
+    }
+
+    public static function getServiceSchema($item)
+    {
+
+        $parent = new Node($item->node->parent);
+
+        if(empty($parent->id)){
+            return [];
+        }
+
+        $schema = [
+            "@type"       => "Service",
+            "name"        => $item->node->title,
+            "url"         => sprintf("https://%s%s" , $_SERVER['SERVER_NAME'], $item->node->getUrl()),
+            "serviceType" => $parent->title,
+            "provider"    => ["@id" =>sprintf("https://%s#dentist" , $_SERVER['SERVER_NAME'])],
+            "offers"      => [
+                "@type"         => "Offer",
+                "price"         => preg_replace('/\D+/', '', $item->price),
+                "priceCurrency" => "RUB",
+                "url"           => sprintf("https://%s%s" , $_SERVER['SERVER_NAME'], $item->node->getUrl()),
+            ],
+        ];
+
+        return json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     }
 }

@@ -22,7 +22,7 @@
                         {/foreach}
                     </ul>
                 {/if}
-                <button class="btn btn--black btn--sm prices-it__btn" data-action="request"><span>Записаться</span>
+                <button type="button" class="btn btn--black btn--sm prices-it__btn" data-action="request"><span>Записаться</span>
                 </button>
             </div>
         </div>

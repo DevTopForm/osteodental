@@ -328,3 +328,9 @@
         </div>
     </section>
 {/if}
+
+{if $schema}
+    <script type="application/ld+json">
+      {$schema}
+    </script>
+{/if}

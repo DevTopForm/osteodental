@@ -1,10 +1,10 @@
-<div class=" pb-60-100 pt-60-100 bg-light">
-    <div class="container doctor">
+<div id="profilepage" class=" pb-60-100 pt-60-100 bg-light">
+    <div id="physician" class="container doctor">
         <div class="doctor__top">
             <h1 class="h1 mb-30">{$content->title}</h1>
             <p class="doctor__position mb-20-40">{$content->position}</p>
             <div class="doctor__contacts">
-                <button class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
+                <button type="button" class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
                 <div class="contacts doctor__contact">
                     <span>Задать вопрос</span>
 
@@ -121,9 +121,9 @@
                         <div class="video anim-cliped anim-block" data-animation="anim-cliped-anim" data-video="{$content->video->getLink()}">
 
                             {if $content->video_cover->id}
-                                <img src="{$content->video_cover->getLink()}" alt="" width="820" height="476">
+                                <img src="{$content->video_cover->getLink()}" alt="{$content->video_cover->alt|escape}" width="820" height="476">
                             {/if}
-                            <button class="btn video-btn">
+                            <button type="button" class="btn video-btn">
                                 <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z" fill="url(#play)"></path>
 

@@ -37,6 +37,12 @@ class Infocenter extends Listing
     {
         $this->tpl_file = 'module/' . $this->node->getType() . '/item.tpl';
         $item = $this->prepareMainItem($item);
+
+
+        if (!empty($item->image) && is_object($item->image)){
+            $this->node->og_image = $item->image;
+        }
+
         Breadcrumb::getInstance()->setItem($item);
         $this->node->meta_title = empty($item->meta_title) ? sprintf(
             "%s %s %s",
@@ -93,6 +99,8 @@ class Infocenter extends Listing
             $item->sources = unserialize($item->sources);
         }
 
+        $this->data['schema'] = $this->getArticleSchema($item);
+
         $this->data['content'] = $item;
     }
 
@@ -102,5 +110,37 @@ class Infocenter extends Listing
         
         $item->date = date('d.m.Y', strtotime($item->date));
         return $item;
+    }
+
+    public static function getArticleSchema($item)
+    {
+        $date = date(\DateTimeInterface::ATOM, strtotime($item->date));
+
+        $schema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Article',
+            'image' => [
+                'https://' . $_SERVER['SERVER_NAME'] . (!empty($item->image->id) ? $item->image->getLink() : '/upload/thumbs/default/default/logo_669e3d.png'),
+            ],
+            'headline' => addslashes($item->h1 ?: $item->title),
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => addslashes($item->node->params['sitename'])
+            ],
+            'datePublished' => $date,
+            'dateModified' => $date,
+            'url' => 'https://' . $_SERVER['SERVER_NAME'] . $item->getUrl(),
+        ];
+
+        if (!empty($item->sources)) {
+            $schema['citation'] = array_values(array_map(function ($item) {
+                return [
+                    '@type' => 'CreativeWork',
+                    'name' => addslashes($item['value'])
+                ];
+            }, $item->sources));
+        }
+
+        return json_encode($schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
     }
 }

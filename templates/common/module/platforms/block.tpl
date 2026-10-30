@@ -1,7 +1,7 @@
 {if $content}
     <div class="bg-light pt-60-100 pb-60-100 fb-wrapper">
         <div class="container">
-            <h3 class="h3 mb-30">{$node->title}</h3>
+            <h2 class="h3 mb-30">{$node->title}</h2>
             <div class="fbs js-auto-swiper" data-gap="20">
                 <div class="fbs__slider js-auto-swiper__slider">
                     <div class="fbs__wrapper swiper-wrapper">

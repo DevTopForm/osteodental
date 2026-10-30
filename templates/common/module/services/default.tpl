@@ -30,7 +30,7 @@
                             <div class="top-slide__num">{$content->sign}</div>
                         {/if}
 
-                        <button class="btn btn--black btn--lg top-slide__btn" data-action="request"><span>Запись</span>
+                        <button type="button" class="btn btn--black btn--lg top-slide__btn" data-action="request"><span>Запись</span>
                         </button>
                     </div>
                 </div>
@@ -42,13 +42,13 @@
                                 <div class="top-slide__slide swiper-slide">
                                     <div class="top-slide__doctor-wrapper">
                                         {if $staff->image->id}
-                                            <img class="top-slide__doctor" src="{$staff->image->getLink('banner')}" alt="" width="576" height="619">
+                                            <img class="top-slide__doctor" src="{$staff->image->getLink('banner')}" alt="{$staff->title|escape}" width="576" height="619">
                                         {/if}
                                     </div>
                                     <div class="top-slide__info info">
                                         {if $staff->rating}
                                             <div class="info__top">
-                                                <img class="info__lic" src="/htdocs/assets/build/img/licences.png" alt="" width="162" height="106">
+                                                <img class="info__lic" src="/htdocs/assets/build/img/licences.png" alt="{$staff->title|escape} - Лицензия" width="162" height="106">
                                                 <div class="info__rating">
                                                     <div class="info__rate">
                                                         <p class="info__rate-rate">{$staff->rating}</p>
@@ -65,7 +65,7 @@
                                                         </svg>
                                                         Проверено
                                                     </div>
-                                                    <img class="info__img" src="/htdocs/assets/build/img/pro-doctorov.png" alt="" width="129" height="20">
+                                                    <img class="info__img" src="/htdocs/assets/build/img/pro-doctorov.png" alt="Про докторов" width="129" height="20">
                                                 </div>
                                             </div>
                                         {/if}
@@ -88,12 +88,12 @@
                 <div class="top-slider__controls">
                     <div class="top-slider__dots js-main-swiper__dots"></div>
                     <div class="top-slider__arrs arrs">
-                        <button class="btn btn--bordered btn--bordered-white arr arr--left">
+                        <button  type="button" class="btn btn--bordered btn--bordered-white arr arr--left">
                             <svg class="btn__icon" fill="none" width="90" height="46">
                                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                             </svg>
                         </button>
-                        <button class="btn btn--bordered btn--bordered-white arr arr--right">
+                        <button  type="button" class="btn btn--bordered btn--bordered-white arr arr--right">
                             <svg class="btn__icon" fill="none" width="90" height="46">
                                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                             </svg>
@@ -157,30 +157,29 @@
                 <div class="digital__imgs-inside">
                     {if $content->head_1->id || $content->head_2->id || $content->head_3->id}
                         {if $content->head_1->id}
-                            <img src="{$content->head_1->getLink()}" alt="" class="digitlal__face">
+                            <img src="{$content->head_1->getLink()}" alt="{$content->head_1->alt|escape}" class="digitlal__face">
                         {/if}
 
                         {if $content->head_2->id}
-                            <img src="{$content->head_2->getLink()}" alt="" class="digitlal__face2 anim" data-animation="slide-in">
+                            <img src="{$content->head_2->getLink()}" alt="{$content->head_2->alt|escape}" class="digitlal__face2 anim" data-animation="slide-in">
                         {/if}
 
                         {if $content->head_3->id}
-                            <img src="{$content->head_3->getLink()}" alt="" class="digitlal__face3 anim" data-animation="slide-in2">
+                            <img src="{$content->head_3->getLink()}" alt="{$content->head_3->alt|escape}" class="digitlal__face3 anim" data-animation="slide-in2">
                         {/if}
                     {else}
-                        <img src="/htdocs/assets/build/img/face3.png" alt="" class="digitlal__face">
-                        <img src="/htdocs/assets/build/img/face2.png" alt="" class="digitlal__face2 anim" data-animation="slide-in">
-                        <img src="/htdocs/assets/build/img/face.png" alt="" class="digitlal__face3 anim" data-animation="slide-in2">
+                        <img src="/htdocs/assets/build/img/face3.png" alt="Лицо 1" class="digitlal__face">
+                        <img src="/htdocs/assets/build/img/face2.png" alt="Лицо 2" class="digitlal__face2 anim" data-animation="slide-in">
+                        <img src="/htdocs/assets/build/img/face.png" alt="Лицо 3" class="digitlal__face3 anim" data-animation="slide-in2">
                     {/if}
                 </div>
             </div>
         </section>
     {/if}
-
     {if $content->advantages}
-        <section class="container">
+        <{if $content->advantages}section{else}div{/if} class="container">
             {if $content->advantages_title}
-                <h3 class="h3 mb-30 h3--arr  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->advantages_title}</h3>
+                <h3 role="heading" class="h3 mb-30 h3--arr  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->advantages_title}</h3>
             {/if}
             <div class="why js-why">
                 <div class="why__slider js-why__slider">
@@ -189,7 +188,7 @@
                             <article class="why-it bg-gray why__it swiper-slide">
                                 <div class="why-it__img">
                                     {if $advantage.image->id}
-                                        <img src="{$advantage.image->getLink()}" alt="" width="261" height="270">
+                                        <img src="{$advantage.image->getLink()}" alt="{$advantage.title|escape}" width="261" height="270">
                                     {/if}
                                 </div>
                                 <div class="why-it__content">
@@ -203,12 +202,12 @@
                     </div>
                 </div>
                 <div class="why__arrs arrs">
-                    <button class="btn btn--bordered  arr arr--left">
+                    <button type="button" class="btn btn--bordered  arr arr--left">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
                     </button>
-                    <button class="btn btn--bordered arr arr--right">
+                    <button type="button" class="btn btn--bordered arr arr--right">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
@@ -217,7 +216,7 @@
             </div>
         </section>
     {/if}
-</section>
+</{if $content->advantages}section{else}div{/if}>
 
 {if $content->equipment}
     {include file="module/includes/equipment.tpl" content=$content->equipment title=$content->equipment_title}
@@ -237,10 +236,10 @@
         <div class="video-block__video js-video-block">
             <div class="video anim-cliped anim-block" data-animation="anim-cliped-anim"  {if $content->video->id}data-video="{$content->video->getLink()}"{/if}>
                 {if $content->video_cover->id}
-                    <img src="{$content->video_cover->getLink()}" alt="" width="820" height="476">
+                    <img src="{$content->video_cover->getLink()}" alt="{$content->video_cover->alt|escape}" width="820" height="476">
                 {/if}
                 {if $content->video->id}
-                    <button class="btn video-btn">
+                    <button type="button" class="btn video-btn">
                         <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z" fill="url(#play)"></path>
 
@@ -282,7 +281,7 @@
                     <div class="advs-it anim-block" data-animation="anim-popup-anim" data-delay="0.0">
                         <div class="advs-it__ico">
                             {if $adv.image->id}
-                                <img class="btn__icon" src="{$adv.image->getLink()}" alt="{$adv.title}" width="27"
+                                <img class="btn__icon" src="{$adv.image->getLink()}" alt="{$adv.title|escape}" width="27"
                                      height="27">
                             {/if}
                         </div>
@@ -295,7 +294,7 @@
     {/if}
 
     {if $content->bottom_slider}
-        <section class="container">
+        <{if $content->bottom_slider_title}section{else}div{/if} class="container">
             {if $content->bottom_slider_title}
                 <h3 class="h3 mb-30 h3--arr  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->bottom_slider_title}</h3>
             {/if}
@@ -306,7 +305,7 @@
                             <article class="why-it bg-gray why__it swiper-slide">
                                 <div class="why-it__img">
                                     {if $advantage.image->id}
-                                        <img src="{$advantage.image->getLink()}" alt="" width="261" height="270">
+                                        <img src="{$advantage.image->getLink()}" alt="{$advantage.title|escape}" width="261" height="270">
                                     {/if}
                                 </div>
                                 <div class="why-it__content">
@@ -320,28 +319,28 @@
                     </div>
                 </div>
                 <div class="why__arrs arrs">
-                    <button class="btn btn--bordered  arr arr--left">
+                    <button type="button" class="btn btn--bordered  arr arr--left">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
                     </button>
-                    <button class="btn btn--bordered arr arr--right">
+                    <button type="button" class="btn btn--bordered arr arr--right">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
                     </button>
                 </div>
             </div>
-        </section>
+        </>
     {/if}
-</section>
+</{if $content->bottom_slider_title}section{else}div{/if}>
 
 {if $content->under_video_text}
     <div class="results pt-60-100  container" data-parallax="0.2">
         {if $content->under_video_title}
-            <h3 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
+            <h2 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
                 {$content->under_video_title}
-            </h3>
+            </h2>
         {/if}
         <div class="results__img">
             {if $content->under_video_image->id}
@@ -352,17 +351,17 @@
             <div class="results__text">
                 {$content->under_video_text}
             </div>
-            <button class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
+            <button type="button" class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
         </div>
 
     </div>
 {/if}
 
-<section id="prices" class="overflow pb-60-100 pt-60-100 bg-light" data-parallax="0.2">
+<{if $content->prices_title || $content->prices_list_title}section{else}div{/if} id="prices" class="overflow pb-60-100 pt-60-100 bg-light" data-parallax="0.2">
     {if $content->prices}
         <section class="container mb-60-100">
             {if $content->prices_title}
-                <h3 class="h3 mb-30" data-parallax="0.2">{$content->prices_title}</h3>
+                <h2 class="h3 mb-30" data-parallax="0.2">{$content->prices_title}</h2>
             {/if}
             <div class="prices">
                 {foreach from=$content->prices item='price' name='prices'}
@@ -375,7 +374,7 @@
     {if $content->prices_list}
         <section class="container">
             {if $content->prices_list_title}
-                <h3 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->prices_list_title}</h3>
+                <h2 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->prices_list_title}</h2>
             {/if}
 
             <div class="other">
@@ -389,24 +388,25 @@
             </div>
         </section>
     {/if}
-</section>
+</{if $content->prices_title || $content->prices_list_title}section{else}div{/if}>
+
 {if $content->numbers}
-    <section>
+    <{if $content->numbers_title}section{else}div{/if}>
         {if $content->numbers_title}
             <div class="container">
-                <h3 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->numbers_title}</h3>
+                <h2 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->numbers_title}</h2>
             </div>
         {/if}
 
         <div class="history ">
             <div class="container history__arrs">
                 <div class="arrs">
-                    <button class="btn btn--bordered  arr arr--left">
+                    <button type="button" class="btn btn--bordered  arr arr--left">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
                     </button>
-                    <button class="btn btn--bordered arr arr--right">
+                    <button type="button" class="btn btn--bordered arr arr--right">
                         <svg class="btn__icon" fill="none" width="90" height="46">
                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                         </svg>
@@ -442,7 +442,7 @@
             </div>
         </div>
 
-    </section>
+    </{if $content->numbers_title}section{else}div{/if}>
 {/if}
 
 {if $content->text_2_title || $content->video_2->id || $content->video_2_cover->id || $content->under_video_2_title}
@@ -465,7 +465,7 @@
                 <div class="digital__imgs anim-block">
                     <div class="digital__imgs-inside">
                         {if $content->text_2_image->id}
-                            <img src="{$content->text_2_image->getLink()}" alt="" class="digitlal__face">
+                            <img src="{$content->text_2_image->getLink()}" alt="{$content->text_2_image->alt|escape}" class="digitlal__face">
                         {/if}
                     </div>
                 </div>
@@ -486,10 +486,10 @@
                 <div class="video-block__video js-video-block">
                     <div class="video anim-cliped anim-block" data-animation="anim-cliped-anim"  {if $content->video_2->id}data-video="{$content->video_2->getLink()}"{/if}>
                         {if $content->video_2_cover->id}
-                            <img src="{$content->video_2_cover->getLink()}" alt="" width="820" height="476">
+                            <img src="{$content->video_2_cover->getLink()}" alt="{$content->video_2_cover->alt|escape}" width="820" height="476">
                         {/if}
                         {if $content->video_2->id}
-                            <button class="btn video-btn">
+                            <button type="button" class="btn video-btn">
                                 <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z" fill="url(#play)"></path>
 
@@ -524,9 +524,9 @@
 
         {if $content->under_video_2_title}
             <div class="results  container" data-parallax="0.2">
-                <h3 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
+                <h2 class="h3 results__h3 anim-block anim-masked" data-animation="anim-masked-mask">
                     {$content->under_video_2_title}
-                </h3>
+                </h2>
                 <div class="results__img">
                     {if $content->under_video_2_image->id}
                         <img src="{$content->under_video_2_image->getLink()}" alt="{$content->under_video_2_title|escape}" width="748" height="571">
@@ -536,7 +536,7 @@
                     <div class="results__text">
                         {$content->under_video_2_text}
                     </div>
-                    <button class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
+                    <button type="button" class="btn btn--blue btn--lg top-slide__btn" data-action="request"><span>Запись</span></button>
                 </div>
 
             </div>
@@ -550,7 +550,7 @@
 </div>
 
 {if $content->results}
-    {include file='module/results/default.tpl' content=$content->results is_slider=true title=$content->results_title}
+    {include file='module/results/default.tpl' content=$content->results is_slider=true title=$content->results_title no_h1=true}
 {/if}
 
 
@@ -559,7 +559,7 @@
 {/if}
 
 {if $content->faq}
-    <section id="faq" class="container questions-block overflow">
+    <{if $content->faq_title}section{else}div{/if} id="faq" class="container questions-block overflow">
         {if $content->faq_title}
             <h3 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->faq_title}</h3>
         {/if}
@@ -568,12 +568,12 @@
                 <details class="faq-it anim-block anim-popup" data-animation="anim-popup-anim">
                     <summary class="faq-it__btn">
                         <span class="faq-it__btn-text">{$question.title}</span>
-                        <div class="faq-it__btn-svg btn">
+                        <span class="faq-it__btn-svg btn">
 
                             <svg class="btn__icon" fill="none" width="18" height="18">
                                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#plus"></use>
                             </svg>
-                        </div>
+                        </span>
                     </summary>
                     <div class="faq-it__content">
                         <div class="faq-it__content-inside">
@@ -583,12 +583,12 @@
                 </details>
             {/foreach}
         </div>
-    </section>
+    </{if $content->faq_title}section{else}div{/if}>
 {/if}
 
 
 {if $content->services}
-    <section class="overflow pb-60-100 pt-60-100 bg-light">
+    <{if $content->services_title}section{else}div{/if} class="overflow pb-60-100 pt-60-100 bg-light">
         <div class="container">
             {if $content->services_title}
                 <h3 class="h3 mb-30  anim-block anim-masked"  data-animation="anim-masked-mask">{$content->services_title}</h3>
@@ -610,7 +610,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </{if $content->services_title}section{else}div{/if}>
 {/if}
 
 {if $ld_json}

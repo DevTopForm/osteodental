@@ -27,7 +27,7 @@
             {/if}
         </div>
         <div class="contacts-top__socials">
-            <button class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
+            <button type="button" class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
             {if $params.link_vk}
                 <a href="{$params.link_vk}" class="footer-soc contacts-top__social">
                     <div class="footer-soc__img">

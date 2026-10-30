@@ -12,7 +12,7 @@
             </div>
 
             <div class="form__btns">
-                <button class="btn btn--sm btn--black" data-action="request">Оставить заявку</button>
+                <button type="button" class="btn btn--sm btn--black" data-action="request">Оставить заявку</button>
             </div>
         </div>
     </div>

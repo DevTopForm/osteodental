@@ -3,7 +3,7 @@
         <div class="specialist__wrap">
             <div class="specialist__img">
                 {if $content->image->id}
-                    <img src="{$content->image->getLink()}" alt="" width="200" height="200">
+                    <img src="{$content->image->getLink()}" alt="{$content->title|escape}" width="200" height="200">
                 {/if}
             </div>
             {if $content->video}
@@ -29,7 +29,7 @@
             <div class="specialist__list">
                 {$content->position}
             </div>
-            <button class="btn btn--black specialist__btn" data-action="request">Запись</button>
+            <button type="button" class="btn btn--black specialist__btn" data-action="request">Запись</button>
         </div>
         {if $content->numbers}
             <div class="specialist__nums column-nums">

@@ -5,14 +5,19 @@
     {include file='page/blocks/meta.tpl'}
 </head>
 <body>
-{include file='page/blocks/yandex_counter.tpl'}
-{include file='page/blocks/google_counter.tpl'}
+{*{include file='page/blocks/yandex_counter.tpl'}*}
+{*{include file='page/blocks/google_counter.tpl'}*}
 {include file='page/blocks/header.tpl'}
 
-<main class="{if $node->type->type == 'services'}main{/if}">
-    {if $node->type->type != 'services'}
+<main id="main-content" class="{if $node->type->type == 'services'}main{/if}">
+{*    {if $node->type->type != 'services'}*}
         {$breadcrumbs}
-    {/if}
+{*    {/if}*}
+
+    <script type="application/ld+json">
+      {$breadcrumbs_schema}
+    </script>
+
     {$content}
 </main>
 

@@ -6,7 +6,7 @@
             </svg>
         </button>
         <div class="popup__name">Запишитесь на консультацию</div>
-        <form action="" enctype="multipart/form-data" method="post" class="form feedback-form">
+        <form action="{$smarty.server.REQUEST_URI|strtok:"?"}"  enctype="multipart/form-data" method="post" class="form feedback-form">
             <input type="hidden" name="areaform" value="{$area_id}"/>
             <input type="hidden" name="ajreq" value="1"/>
             <input type="hidden" name="send" value="1"/>

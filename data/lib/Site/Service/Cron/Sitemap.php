@@ -125,7 +125,7 @@ class Sitemap extends Cron {
                     if(!empty($item['alias'])){
                         $this->createElement($nodeUrl.'/'.$item['alias'],$elementChangefreq, $elementPriority);
                     } else {
-                        $this->createElement($nodeUrl.'?id='.$item['id'],$elementChangefreq, $elementPriority);
+//                        $this->createElement($nodeUrl.'?id='.$item['id'],$elementChangefreq, $elementPriority);
                     }
                     $count++;
                     if($count==$step){

@@ -1,11 +1,11 @@
 {if $content}
-    <div id="results" class="overflow result-block">
+    <div id="results" class="overflow result-block {if !$title && $no_h1}pt-60-100{/if}">
        
         {if $title}
             <div class="result-block__top container  mb-30">
                 <h2 class="h3">{$title}</h2>
             </div>
-        {else}
+        {elseif !$no_h1}
             <div class="result-block__top container pt-60-100 mb-30">
                 <h1 class="h1">{$node->h1|default:$node->title}</h1>
             </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 {if $result->text}
                                     <div class="result-slide__anam">
-                                        <h4>Анамнез</h4>
+                                        <h3>Анамнез</h3>
                                         {$result->text}
                                     </div>
                                 {/if}
@@ -64,10 +64,10 @@
                                         <div class="before-it js-before">
                                             <div class="before-it__img ">
                                                 <div class="before-it__img-before">
-                                                    <img src="{$result->video_cover_2->getLink()}" alt="" loading="lazy" decoding="async" width="473" height="231">
+                                                    <img src="{$result->video_cover_2->getLink()}" alt="{$result->video_cover_2->alt|escape}" loading="lazy" decoding="async" width="473" height="231">
                                                 </div>
                                                 <div class="before-it__img-after  js-before__before">
-                                                    <img src="{$result->video_cover->getLink()}" alt="" loading="lazy" decoding="async" width="473" height="231">
+                                                    <img src="{$result->video_cover->getLink()}" alt="{$result->video_cover->alt|escape}" loading="lazy" decoding="async" width="473" height="231">
                                                 </div>
                                                 <input class="before-it__range  js-before__range" type="range" min="0" max="100" value="30">
                                             </div>
@@ -77,7 +77,7 @@
                                         <div class="video anim-block anim-cliped" data-animation="anim-cliped-anim">
 
 {*                                                {if $result->video_cover->id}*}
-                                                <img src="{$result->video_cover->getLink()}" alt="" width="820"
+                                                <img src="{$result->video_cover->getLink()}" alt="{$result->video_cover->alt|escape}" width="820"
                                                      height="476">
 {*                                                {/if}*}
 
@@ -171,7 +171,7 @@
                                                     {if $image->id}
                                                         <a {if $image->title}data-title="{$image->title}"{/if} href="{$image->getLink('view')}"
                                                            class="progress__img glightbox-{$result->id}">
-                                                            <img src="{$image->getLink()}" alt="" width="88"
+                                                            <img src="{$image->getLink()}" alt="{$image->alt|escape}" width="88"
                                                                  height="58">
                                                         </a>
                                                     {/if}

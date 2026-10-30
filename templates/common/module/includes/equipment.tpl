@@ -1,8 +1,8 @@
 {if $content}
-    <section class="overflow pb-60-100 pt-60-100 bg-light" data-parallax="0.2">
+    <{if $title}section{else}div{/if} class="overflow pb-60-100 pt-60-100 bg-light" data-parallax="0.2">
         <div class="container">
             {if $title}
-                <h3 class="h3 mb-30  anim-block anim-masked" data-animation="anim-masked-mask">{$title}</h3>
+                <h2 role="heading" class="h3 mb-30  anim-block anim-masked" data-animation="anim-masked-mask">{$title}</h2>
             {/if}
 
             <div class="equipment js-cards">
@@ -33,5 +33,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </{if $title}section{else}div{/if}>
 {/if}

@@ -44,7 +44,7 @@ class Node extends Model
             $this->type = Type::getByKey('type', $this->type);
         }
         if (!empty($this->image)) {
-            $this->image = new Image($this->image);
+            $this->image = $this->og_image = new Image($this->image);
         }
         $this->menutitle = empty($this->menutitle) ? $this->title : $this->menutitle;
     }
@@ -204,7 +204,8 @@ class Node extends Model
 
         $this->tpl->assign('ld_json', json_encode([
             "@context" => "https://schema.org",
-            "@type" => "MedicalOrganization",
+            "@type" => "Dentist",
+            "@id" => sprintf("https://%s#dentist" , $_SERVER['SERVER_NAME']),
             "name" => $params['sitename'],
             "url" => sprintf("https://%s" , $_SERVER['SERVER_NAME']),
             "logo" => $params['logo']->id ? $params['logo']->getLink() : '',
@@ -291,6 +292,7 @@ class Node extends Model
 
         $this->tpl->assign('favicon', $favicon);
         $this->tpl->assign('breadcrumbs', $breadcrumbs->parse());
+        $this->tpl->assign('breadcrumbs_schema', $breadcrumbs->getSchema());
         $this->tpl->display('page/' . (empty($this->template->file) ? 'index.tpl' : $this->template->file));
     }
 

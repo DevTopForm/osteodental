@@ -52,7 +52,8 @@ class Breadcrumb
         ];
 
         $list = array_reverse($list);
-        foreach ($list as $item) {
+        foreach ($list as $key => $item) {
+            $item['position'] = $key + 1;
             $this->push($item);
         }
     }
@@ -75,6 +76,26 @@ class Breadcrumb
         $tpl = new Template();
         $tpl->assign('list', $this->list);
         return $tpl->fetch('service/breadcrumbs.tpl');
+    }
+
+    public function getSchema()
+    {
+        $breadcrumbs = [
+            "@context" => "https://schema.org",
+            "@type"    => "BreadcrumbList",
+            "itemListElement" => array_map(
+                function ($value) {
+                    return [
+                        "@type"    => "ListItem",
+                        "position" => $value['position'],
+                        "name"     => $value['title'],
+                        "item"     => $value['url'],
+                    ];
+                },
+                $this->list
+            )
+        ];
+        return json_encode($breadcrumbs, JSON_UNESCAPED_UNICODE);
     }
 
 }

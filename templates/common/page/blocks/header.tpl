@@ -2,6 +2,7 @@
     <div><img loading="lazy" decoding="async" src="https://mc.yandex.ru/watch/107154300"
               style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
+<a href="#main-content" class="skip-link visually-hidden">Перейти к основному содержимому</a>
 <header class="header bg-gray">
     <div class="container header__container">
         <a href="/" class="logo header__logo  anim-popdown anim-block" data-animation="anim-podown-anim">

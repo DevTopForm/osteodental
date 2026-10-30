@@ -7,11 +7,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="{if $node->meta_title}{$node->meta_title}{else}{$node->title}{/if}">
 <meta property="og:description" content="{$node->meta_description}">
-{if $params.logo->id}
-    <meta property="og:image" content="{$params.logo->getLink()}">
+{if $node->og_image->id}
+    <meta property="og:image" content="{$params.site.protocol}{$params.site.host}{$node->og_image->getLink()}">
 {/if}
 {if $node->id}
-    <meta property="og:url" content="{if $node->getUrl() == '/main'}/{else}{$node->getUrl()}{/if}">
+    <meta property="og:url" content="{$params.site.protocol}{$params.site.host}{if $node->getUrl() == '/main'}/{else}{$node->getUrl()}{/if}">
 {/if}
 
 <meta name="yandex-verification" content="2054402ca0b52f1a" />

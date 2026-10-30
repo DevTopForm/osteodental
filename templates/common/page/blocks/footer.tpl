@@ -84,6 +84,7 @@
             <div class="footer__btm">
                 <img
                         src="/htdocs/assets/build/img/info.svg"
+                        alt="Информация"
                         class="footer__info"
                 >
             </div>
@@ -105,11 +106,11 @@
                 {/if}
 
                 {if $params.bottom_banner_image->id}
-                    <img class="tg-ban__tg" loading="lazy" decoding="async" src="{$params.bottom_banner_image->getLink()}" alt="" width="109" height="109">
+                    <img class="tg-ban__tg" loading="lazy" decoding="async" src="{$params.bottom_banner_image->getLink()}" alt="{$params.bottom_banner_image->alt|escape}" width="109" height="109">
                 {/if}
-                <img class="tg-ban__present" loading="lazy" decoding="async" src="/htdocs/assets/build/img/tg-ban.png" alt="" width="256" height="314">
+                <img class="tg-ban__present" loading="lazy" decoding="async" src="/htdocs/assets/build/img/tg-ban.png" alt="Баннер тг" width="256" height="314">
             </div>
-            <img class="tg-ban__bg" loading="lazy" decoding="async" src="/htdocs/assets/build/img/tg-ban.svg" alt="" width="1460" height="621">
+            <img class="tg-ban__bg" loading="lazy" decoding="async" src="/htdocs/assets/build/img/tg-ban.svg" alt="Баннер тг" width="1460" height="621">
         </div>
     </div>
 {/if}

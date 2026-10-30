@@ -38,8 +38,10 @@ $webPath = '/upload/source/filemanager/' . $safeName;
 // 7. Возвращаем ответ в формате, ожидаемом SunEditor
 echo json_encode([
     'result' => [
-        'url' => $webPath,      // обязательно поле 'url'
-        'name' => $safeName,
-        'size' => $_FILES['file']['size'],
+        [
+            'url' => $webPath,      // обязательно поле 'url'
+            'name' => $safeName,
+            'size' => $_FILES['file']['size'],
+        ]
     ]
 ]);

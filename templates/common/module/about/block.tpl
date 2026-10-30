@@ -1,6 +1,6 @@
 
     <div id="about" class="container">
-        <h3 class="h3 mb-30 anim-block anim-masked"  data-animation="anim-masked-mask">{$node->title}</h3>
+        <h2 class="h3 mb-30 anim-block anim-masked"  data-animation="anim-masked-mask">{$node->title}</h2>
         <div class="about">
             <div class="clinick-block about__slider js-thumb-swiper">
                 {if $content->images}

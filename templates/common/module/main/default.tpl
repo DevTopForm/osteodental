@@ -1,12 +1,12 @@
-<section class="bg-light pt-60-100 index-top-wrap">
+<section id="dentist" class="bg-light pt-60-100 index-top-wrap">
     <div class="index-top-wrap__inside">
         <div class="container">
-            <img src="/htdocs/assets/build/img/osteo.svg" alt="" width="1177" height="685" data-parallax="0.2">
+            <img src="/htdocs/assets/build/img/osteo.svg" alt="Osteo Dental" width="1177" height="685" data-parallax="0.2">
         </div>
     </div>
     <div class="container index-top">
         <div class="index-top__left">
-            <div class="index-top__name">{$node->h1 ?: $content->title}</div>
+            <h1 class="index-top__name">{$node->h1 ?: $content->title}</h1>
 
             {if $content->main_links}
                 <div class="index-top__tags">
@@ -21,7 +21,7 @@
                 </div>
                 <div class="index-top__btns">
                     <a href="/listing" class="btn btn--bordered-black btn--lg"><span>все услуги</span></a>
-                    <button class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
+                    <button type="button" class="btn btn--black btn--lg" data-action="request"><span>Запись</span></button>
                 </div>
             {/if}
         </div>
@@ -51,11 +51,11 @@
                 <div class="index-top-long bg-white anim-block" data-animation="anim-popup-anim" data-delay="0.2">
                     <div class="digital-imgs anim-block">
                         <div class="digital__imgs-inside">
-                            <img src="/htdocs/assets/build/img/face3.png" alt="" class="digitlal__face">
-                            <img src="/htdocs/assets/build/img/face2.png" alt=""
+                            <img src="/htdocs/assets/build/img/face3.png" alt="Лицо 3" class="digitlal__face">
+                            <img src="/htdocs/assets/build/img/face2.png" alt="Лицо 2"
                                  class="digitlal__face2 anim slide-in animated"
                                  data-animation="slide-in">
-                            <img src="/htdocs/assets/build/img/face.png" alt=""
+                            <img src="/htdocs/assets/build/img/face.png" alt="Лицо 1"
                                  class="digitlal__face3 anim slide-in2 animated"
                                  data-animation="slide-in2">
                         </div>
@@ -68,7 +68,7 @@
 </section>
 
 {if $content->stocks}
-    {include file="module/includes/stocks.tpl" content=$content->stocks title=$content->stocks_title}
+    {include file="module/includes/stocks.tpl" content=$content->stocks title=$content->stocks_title h2=true}
 {/if}
 
 
@@ -89,10 +89,10 @@
                      data-video="{$content->video_block_video->getLink()}">
 
                     {if $content->video_block_preview->id}
-                        <img src="{$content->video_block_preview->getLink()}" alt="" width="820" height="476">
+                        <img src="{$content->video_block_preview->getLink()}" alt="{$content->video_block_preview->alt}" width="820" height="476">
                     {/if}
 
-                    <button class="btn video-btn">
+                    <button type="button" class="btn video-btn">
                         <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z"
@@ -124,9 +124,9 @@
     <section class="overflow" data-parallax="0.2">
         <div class="container">
             {if $content->video_reviews_title}
-                <h3 class="h3 mb-30 anim-masked anim-block" data-animation="anim-masked-mask">
+                <h2 class="h3 mb-30 anim-masked anim-block" data-animation="anim-masked-mask">
                     {$content->video_reviews_title}
-                </h3>
+                </h2>
             {/if}
             <div class="videos js-mobile-swiper js-video-block" data-clicked="true">
                 <div class="videos__slider js-mobile-swiper__slider">
@@ -134,7 +134,7 @@
                         {foreach from=$content->video_reviews item='review' name='reviews'}
                             <div class="videos__it swiper-slide  {if $review->is_short}videos__it--short{else}videos__it--long{/if}" data-video="{$review->video->getLink()}">
                                 {if $review->cover->id}
-                                    <img width="2413" height="11357" loading="lazy" decoding="async" src="{$review->cover->getLink()}" alt="">
+                                    <img width="2413" height="11357" loading="lazy" decoding="async" src="{$review->cover->getLink()}" alt="{$review->cover->alt|escape}">
                                 {/if}
 
                                 <div class="rotate-btn btn videos__it-btn">
@@ -179,7 +179,7 @@
 {if $content->news}
     <section class="overflow pb-60-100 mt-minus">
         <div class="container">
-            <h3 class="h3 mb-30 anim-masked anim-block" data-animation="anim-masked-mask">{$content->news_title}</h3>
+            <h2 class="h3 mb-30 anim-masked anim-block" data-animation="anim-masked-mask">{$content->news_title}</h2>
             <div class="news-slider js-why" data-gap="20">
                 <div class="news-slider__slider js-why__slider">
                     <div class="news-slider__wrapper swiper-wrapper">

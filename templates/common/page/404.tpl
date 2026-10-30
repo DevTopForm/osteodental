@@ -9,7 +9,7 @@
 {include file='page/blocks/google_counter.tpl'}
 {include file='page/blocks/header.tpl'}
 
-<main>
+<main id="main-content">
     <div class="container">
         <div class="pt-60-100 pb-60-100" style="display: flex; flex-direction: column; align-items: center; justify-content: center">
             <h1 class="h2 mb-20">404</h1>

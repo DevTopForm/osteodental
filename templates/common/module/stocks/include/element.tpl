@@ -11,7 +11,7 @@
 
 
         {if $content->text}
-            <button class="btn btn--bordered btn--bordered-white btn--sm promo__btn"
+            <button type="button" class="btn btn--bordered btn--bordered-white btn--sm promo__btn"
                     data-action="promo-{$content->id}">
                 <span>Подробнее</span>
             </button>

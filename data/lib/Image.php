@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Image\Resizer;
+use App\Converter\Webp;
 use App\Image\Setting as ImageSetting;
 
 class Image extends File
@@ -144,7 +145,8 @@ class Image extends File
                 return '';
             }
         }
-        return ($url) ? $this->getUploadHttp($type, $this->node_type) . $this->name : $path;
+        
+        return ($url) ? $this->getWebP($this->getUploadHttp($type, $this->node_type) . $this->name) : $path;
     }
 
     public function prepareDelete()
@@ -263,6 +265,31 @@ class Image extends File
         $db->query($db->sql->buildSqlString($insert), $db::QUERY_MODE_EXECUTE);
         $this->id = $db->getDriver()->getConnection()->getLastGeneratedValue();
         $this->loadData();
+    }
+
+    public function getWebP($url)
+    {
+        $webp = '/upload/webp' . str_replace('/upload', '', $url);
+        $webp = explode('.', $webp);
+        array_pop($webp);
+        $webp[] = 'webp';
+        $webp = implode('.', $webp);
+        $full_webp = $_SERVER['DOCUMENT_ROOT'] . $webp;
+
+        if (!file_exists($full_webp)) {
+            $destination = explode('/', $full_webp);
+            array_pop($destination);
+            $destination = implode('/', $destination);
+            $converter = new Webp($destination, 100);
+
+            try {
+                $converter->convert($_SERVER['DOCUMENT_ROOT'] . $url);
+            } catch (\Exception $e) {
+                return $url;
+            }
+        }
+
+        return $webp;
     }
 }
 
