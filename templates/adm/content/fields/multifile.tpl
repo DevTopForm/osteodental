@@ -40,7 +40,7 @@
 		</tbody>
 	</table>
 	{literal}
-	<script type="text/javascript">
+	<script>
 		$(function() {
 			var fieldName = "{/literal}{$field->name}{literal}";
 			var newKey = parseInt("{/literal}{if $field->value}{$field->value|@array_keys|@max}{else}0{/if}{literal}", 10) + 1;

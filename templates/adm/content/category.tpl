@@ -31,7 +31,7 @@
     </div>
     <div class="clear"></div>
 </form>
-<script type="text/javascript">
+<script>
     {literal}
     $(document).ready(function(){
         if ($('table.catalog-action-list.hide').length) {

@@ -9,13 +9,13 @@
                 <label class="search__label">
                     <input name="s" value="{$smarty.get.s}" type="text" class="search__input" placeholder="Найти">
                 </label>
-                <button class="btn search__clear">
+                <button type="button" class="btn search__clear">
                     <svg fill="none" width="8" height="8">
                         <use xlink:href="/htdocs/assets/build/img/sprite.svg#close"></use>
                     </svg>
                     Очистить
                 </button>
-                <button class="btn btn--green search__btn">
+                <button type="submit" class="btn btn--green search__btn">
                     <svg fill="none" width="20" height="20">
                         <use xlink:href="/htdocs/assets/build/img/sprite.svg#search"></use>
                     </svg>

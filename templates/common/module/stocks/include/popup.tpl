@@ -1,7 +1,7 @@
 {if $content}
     <div class="popup" data-target="promo-{$content->id}">
         <div class="popup__inside">
-            <button class="btn popup__close js-close">
+            <button type="button" class="btn popup__close js-close" aria-label="Закрыть попап">
                 <svg fill="none" width="30" height="30">
                     <use xlink:href="/htdocs/assets/build/img/sprite.svg#cross"></use>
                 </svg>

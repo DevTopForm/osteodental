@@ -1,6 +1,6 @@
 <div class="popup popup--question" data-popup="question">
     <div class="popup__inside">
-        <button class="btn btn--close popup__close js-close" aria-label="Закрыть попап">
+        <button type="button" class="btn btn--close popup__close js-close" aria-label="Закрыть попап">
             <svg fill="none" width="9" height="9">
                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#cross"></use>
             </svg>
@@ -36,7 +36,7 @@
                         <span class="label__error">Обязательное поле</span>
                     </label>
                     <label class="label">
-                        <textarea class="label__input" type="textarea" name="field_133_area_0" placeholder="Комментарий" rows="4"></textarea>
+                        <textarea class="label__input" name="field_133_area_0" placeholder="Комментарий" rows="4"></textarea>
                         <span class="label__name">Ваш вопрос</span>
                         <span class="label__error">Обязательное поле</span>
                     </label>

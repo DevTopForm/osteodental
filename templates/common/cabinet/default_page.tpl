@@ -1,7 +1,7 @@
 <div class="article">
 <div class="txt">
 	{$content}
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function(){ldelim}
 			$('.form-container input.username').val('{$user->lastname} {$user->firstname} {$user->middlename}')
 		{rdelim});

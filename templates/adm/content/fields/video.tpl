@@ -30,7 +30,7 @@
 		<input id="{$field->name}_service" type="hidden" name="{$field->name}[service]" value="" />
 		<input id="{$field->name}_code" type="hidden" name="{$field->name}[code]" value="" />
 		<input id="{$field->name}_image" type="hidden" name="{$field->name}[img]" value="" />
-		{literal}<script type="text/javascript">
+		{literal}<script>
 		$(document).ready(function() {
 			$('.videolink').change(function(){
 				$('#'+$(this).attr('id')+'_img').parent().hide();

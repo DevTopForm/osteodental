@@ -2,7 +2,7 @@
 	<label>
 		{$field->title}{if $field->required}*{/if}
 	</label>
-	<script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>
+	<script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>
 	<div class="fields" style="width: 220px; float:left;">
 		{$field->getHtml()}
 		<div class="clear"></div>

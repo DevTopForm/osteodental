@@ -1,6 +1,6 @@
 <div class="popup popup--consult" data-popup="consult">
     <div class="popup__inside">
-        <button class="btn btn--close popup__close js-close" aria-label="Закрыть попап">
+        <button type="button" class="btn btn--close popup__close js-close" aria-label="Закрыть попап">
             <svg fill="none" width="9" height="9">
                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#cross"></use>
             </svg>

@@ -50,8 +50,8 @@
                 {/if}
             </div>
         </div>
-        <button class="btn btn--black btn--sm header__connect" data-action="request"><span>Запись</span></button>
-        <button class="btn header__toggler anim-popdown anim-block js-menu-opener" data-animation="anim-podown-anim">
+        <button type="button" class="btn btn--black btn--sm header__connect" data-action="request"><span>Запись</span></button>
+        <button type="button" class="btn header__toggler anim-popdown anim-block js-menu-opener" data-animation="anim-podown-anim">
             <svg class="btn__open" fill="none" width="36" height="12">
                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#menu"></use>
             </svg>

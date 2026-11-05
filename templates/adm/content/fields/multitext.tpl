@@ -55,7 +55,7 @@
 </div>
 
 {literal}
-<script type="text/javascript">
+<script>
     document.addEventListener("DOMContentLoaded", () => {
         const fieldName = "{/literal}{$field->name}{literal}";
         let newKey = parseInt("{/literal}{if $field->getSpecValue()|@count>0}{$field->getSpecValue()|@array_keys|@max}{else}1{/if}{literal}", 10) + 1;

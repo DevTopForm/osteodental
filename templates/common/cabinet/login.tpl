@@ -46,6 +46,6 @@
             <input name="policy" class="check" type="checkbox" value="1">
             <span>Подтверждаю, что ознакомлен и согласен с Политикой конфиденциальности</span>
         </label>
-        <button class="btn btn--black btn--st order__btn">Войти</button>
+        <button type="submit" class="btn btn--black btn--st order__btn">Войти</button>
     </div>
 </form>

@@ -65,7 +65,7 @@
 
 	</form>
 
-	<script type="text/javascript">
+	<script>
 		jQuery(function($){ldelim}
 			{foreach from=$size key='type' name='sizeForeach' item='item'}
 			{if $smarty.foreach.sizeForeach.first}

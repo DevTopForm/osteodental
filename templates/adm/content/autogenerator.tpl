@@ -44,7 +44,7 @@
   <div class="clear"></div>
   <input type="submit" value="Генерировать" name="submit">
 </form>
-<script type="text/javascript">
+<script>
 {literal}
   $(document).ready(function() {
     $('#autogenerator_form').submit(function(){

@@ -15,12 +15,12 @@
             {if $is_slider && count($content) > 1}
                 <div class="container results-slider__arrs ">
                     <div class="arrs">
-                        <button class="btn btn--bordered  arr arr--left">
+                        <button type="button" class="btn btn--bordered  arr arr--left">
                             <svg class="btn__icon" fill="none" width="90" height="46">
                                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                             </svg>
                         </button>
-                        <button class="btn btn--bordered arr arr--right">
+                        <button type="button" class="btn btn--bordered arr arr--right">
                             <svg class="btn__icon" fill="none" width="90" height="46">
                                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                             </svg>
@@ -82,7 +82,7 @@
 {*                                                {/if}*}
 
                                             {if false}
-                                                <button class="btn video-btn">
+                                                <button type="button" class="btn video-btn">
                                                     <svg class="btn__play" width="30" height="34" viewBox="0 0 12 14"
                                                          fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M11.4986 5.90383C12.1656 6.28866 12.1656 7.25138 11.4986 7.63621L1.49972 13.4048C0.833055 13.7894 4.20706e-08 13.3083 7.57384e-08 12.5386L5.80418e-07 1.00143C6.14086e-07 0.231771 0.833057 -0.249371 1.49972 0.135244L11.4986 5.90383Z"

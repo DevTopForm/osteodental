@@ -96,7 +96,7 @@
 		<div class="basket-button"><a href="#" class="button save">Оформить</a></div>
 		<div class="clear">&nbsp;</div>
 	</form>
-	<script type="text/javascript">
+	<script>
 		$(document).ready(function(){ldelim}
 			$('.delivery-select input[name=delivery]').change(function(){ldelim}
 				var val = $('.delivery-select input[name=delivery]:checked').val();

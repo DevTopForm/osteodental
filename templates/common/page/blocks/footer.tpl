@@ -95,7 +95,7 @@
     <div class="tg-ban">
         <div class="tg-ban__inside">
             <div class="container">
-                <button style="z-index: 1" class="btn tg-ban__close" aria-label="закрыть блок">
+                <button type="button" style="z-index: 1" class="btn tg-ban__close" aria-label="закрыть блок">
                     <svg fill="none" width="20" height="20">
                         <use xlink:href="/htdocs/assets/build/img/sprite.svg#cross"></use>
                     </svg>

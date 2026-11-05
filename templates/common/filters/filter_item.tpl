@@ -1,6 +1,6 @@
 <div class="fieldset js-to-expand opened">
     <div class="fieldset__top">
-        <button class="btn fieldset__head js-filter-expand opened">
+        <button type="button" class="btn fieldset__head js-filter-expand opened">
             <span>{$title}</span>
             <span class="fieldset__toggler">
                 <svg fill="none" width="13" height="13">

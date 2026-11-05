@@ -134,12 +134,12 @@
                                     </div>
                                 </div>
                                 <div class="doctors__arrs arrs">
-                                    <button class="btn btn--bordered arr arr--left">
+                                    <button type="button" class="btn btn--bordered arr arr--left">
                                         <svg class="btn__icon" fill="none" width="90" height="46">
                                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                                         </svg>
                                     </button>
-                                    <button class="btn btn--bordered arr arr--right">
+                                    <button type="button" class="btn btn--bordered arr arr--right">
                                         <svg class="btn__icon" fill="none" width="90" height="46">
                                             <use xlink:href="/htdocs/assets/build/img/sprite.svg#arr"></use>
                                         </svg>

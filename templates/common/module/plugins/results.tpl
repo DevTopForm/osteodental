@@ -12,7 +12,7 @@
 
         {if count($content) > 3}
             <div class="more-block">
-                <button class="btn btn--rounded2 btn--blue more-block__btn">Показать еще</button>
+                <button type="button" class="btn btn--rounded2 btn--blue more-block__btn">Показать еще</button>
             </div>
         {/if}
     </section>

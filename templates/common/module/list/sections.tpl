@@ -22,7 +22,7 @@
                         <div class="menu-ban__name">
                             Подбор под вашу задачу
                         </div>
-                        <button class="btn btn--lilac btn--lg menu-ban__btn" aria-label="Подобрать"
+                        <button type="button" class="btn btn--lilac btn--lg menu-ban__btn" aria-label="Подобрать"
                                 data-action="consult">
                             Запросить подбор
                         </button>

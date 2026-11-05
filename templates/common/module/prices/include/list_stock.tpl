@@ -1,5 +1,5 @@
 {if $content}
-    <div class="other-sale bg-blue anim-block anim-masked"  data-animation="anim-masked-mask"">
+    <div class="other-sale bg-blue anim-block anim-masked"  data-animation="anim-masked-mask">
         <div class="other-sale__img">
             {if $content->image->id}
                 <img src="{$content->image->getLink()}" alt="" width="149" height="103">
@@ -18,7 +18,7 @@
         </div>
         <div class="other-sale__salt">Акция</div>
 
-        <button class="btn btn--white btn--sm other-sale__btn" data-action="request">
+        <button type="button" class="btn btn--white btn--sm other-sale__btn" data-action="request">
             Запись
         </button>
     </div>

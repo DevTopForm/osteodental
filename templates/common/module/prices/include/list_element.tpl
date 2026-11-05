@@ -9,7 +9,7 @@
                 {$content->price}
             </div>
 
-            <button class="btn btn--black btn--square other-it__btn" data-action="request">
+            <button type="button" class="btn btn--black btn--square other-it__btn" data-action="request">
                 <svg class="btn__icon" fill="none" width="22" height="26">
                     <use xlink:href="/htdocs/assets/build/img/sprite.svg#hand"></use>
                 </svg>

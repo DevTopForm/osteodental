@@ -1,5 +1,5 @@
 <div class="fieldset opened">
-    <button class="btn fieldset__head js-filter-sub">
+    <button type="button" class="btn fieldset__head js-filter-sub">
         <span>{$title}</span>
         <span class="fieldset__toggler">
             <svg fill="none" width="20" height="20">

@@ -18,12 +18,12 @@
                 {/foreach}
             </div>
         </div>
-        <button class="btn btn--arr btn--white arr-left sales__left">
+        <button type="button" class="btn btn--arr btn--white arr-left sales__left">
             <svg fill="none" width="20" height="20">
                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#chevron"></use>
             </svg>
         </button>
-        <button class="btn btn--arr btn--white arr-right sales__right">
+        <button type="button" class="btn btn--arr btn--white arr-right sales__right">
             <svg fill="none" width="20" height="20">
                 <use xlink:href="/htdocs/assets/build/img/sprite.svg#chevron"></use>
             </svg>
