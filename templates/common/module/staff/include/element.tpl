@@ -10,10 +10,13 @@
                 <a href="{$content->getUrl()}#video" class="specialist__play ">
                     <div class="specialist__play-inside">
                         <div class="btn btn--play">
-                            <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.3159 9.06029C18.171 9.55399 18.171 10.7882 17.3159 11.2819L1.92399 20.1685C1.06888 20.6621 5.39504e-08 20.045 9.71107e-08 19.0576L8.73996e-07 1.28458C9.17156e-07 0.297183 1.06888 -0.319937 1.92399 0.173759L17.3159 9.06029Z" fill="url(#paint0_linear_1491_2095)"></path>
+                            <svg width="18" height="21" viewBox="0 0 18 21" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.3159 9.06029C18.171 9.55399 18.171 10.7882 17.3159 11.2819L1.92399 20.1685C1.06888 20.6621 5.39504e-08 20.045 9.71107e-08 19.0576L8.73996e-07 1.28458C9.17156e-07 0.297183 1.06888 -0.319937 1.92399 0.173759L17.3159 9.06029Z"
+                                      fill="url(#paint0_linear_1491_2095)"></path>
                                 <defs>
-                                    <linearGradient id="paint0_linear_1491_2095" x1="9.61995" y1="-0.937057" x2="3.44575e-06" y2="21.3812" gradientUnits="userSpaceOnUse">
+                                    <linearGradient id="paint0_linear_1491_2095" x1="9.61995" y1="-0.937057"
+                                                    x2="3.44575e-06" y2="21.3812" gradientUnits="userSpaceOnUse">
                                         <stop stop-color="#7BFAD5"></stop>
                                         <stop offset="1" stop-color="white"></stop>
                                     </linearGradient>
@@ -25,7 +28,13 @@
             {/if}
         </div>
         <div class="specialist__info">
-            <div class="specialist__name">{$content->title}</div>
+            <div class="specialist__name">
+                {if $h2}
+                    <h2 style="font-size: inherit; font-weight: inherit;">{$content->title}</h2>
+                {else}
+                    {$content->title}
+                {/if}
+            </div>
             <div class="specialist__list">
                 {$content->position}
             </div>

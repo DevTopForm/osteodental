@@ -4,7 +4,14 @@
         {if $content->sign}
             <div class="glass-tag glass-tag--white">{$content->sign}</div>
         {/if}
-        <div class="promo__name">{$content->title}</div>
+        <div class="promo__name">
+            {if $h2}
+                <h2 style="font-weight: inherit; font-size: inherit">{$content->title}</h2>
+            {else}
+                {$content->title}
+            {/if}
+        </div>
+
         {if $content->price}
             <div class="promo__price">{$content->price}</div>
         {/if}

@@ -9,7 +9,13 @@
         {/if}
 
         <div class="news-it__content">
-            <div class="news-it__name">{$content->title}</div>
+            <div class="news-it__name">
+                {if $h2}
+                    <h2 style="font-size: inherit; font-weight: inherit">{$content->title}</h2>
+                {else}
+                    {$content->title}
+                {/if}
+            </div>
             <div class="news-it__text">{$content->announce}</div>
             <div class="news-it__info">
                 <span>{$content->date}</span>

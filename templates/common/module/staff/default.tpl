@@ -6,7 +6,7 @@
     <div class="doctors-list">
         {if $content}
             {foreach from=$content item='item' name='items'}
-                {include file='module/staff/include/element.tpl' content=$item}
+                {include file='module/staff/include/element.tpl' content=$item h2=true}
             {/foreach}
         {else}
             Врачей не найдено

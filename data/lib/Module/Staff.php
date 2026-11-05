@@ -38,6 +38,7 @@ class Staff extends Listing
 
         $item->results = Results::getResultsByStaffID($item->id);
         $item->prices = self::getPricesByIDs($item->prices ?: '');
+        $item->main_links = !empty($item->main_links) ? Complex::getDisplayValue($item->main_links) : [];
 
         $this->data['ld_json'] = json_encode([
             "@context" => "https://schema.org",

@@ -5,7 +5,7 @@
             <div class="results-slider ">
                 <div class="results-slider__list results-slider__list--small-gap">
                     {foreach $content as $article}
-                        {include file='module/news/include/element.tpl' content=$article class='active swiper-slide'}
+                        {include file='module/news/include/element.tpl' content=$article class='active swiper-slide' h2=true}
                     {/foreach}
                 </div>
             </div>

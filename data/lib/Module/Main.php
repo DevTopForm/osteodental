@@ -25,6 +25,9 @@ class Main extends Item
         if (!empty($item->partner2_img) && !is_object($item->partner2_img)) {
             $item->partner2_img = new Image($item->partner2_img);
         }
+        if (!empty($item->block_image) && !is_object($item->block_image)) {
+            $item->block_image = new Image($item->block_image);
+        }
 
         $item->stocks = self::getStocksByIDs($item->stocks ?: '');
 

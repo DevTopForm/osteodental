@@ -8,9 +8,9 @@
                     {if $content|count > 1}
                         <div class="h3 mb-30 anim-block">
                             {if $service.url}
-                                <a style="color: inherit" href="{$service.url}">{$service.title}</a>
+                                <a style="color: inherit" href="{$service.url}"><h2 style="font-size: inherit; font-weight: inherit;">{$service.title}</h2></a>
                             {else}
-                                {$service.title}
+                                <h2 style="font-size: inherit; font-weight: inherit;">{$service.title}</h2>
                             {/if}
                         </div>
                     {/if}
